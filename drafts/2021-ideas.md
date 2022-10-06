@@ -56,37 +56,73 @@ Alternative is to interpret diagrams: nodes, lines, labels, but that leaves me i
 
 So, what are my primitives? line, label
 select:
-1 --- ask left, right, or stop
-   ^
-2 |
-  |< ask up, down, or stop
-  |
+	1 --- ask left, right, or stop
+		^
+	2 |
+	  |< ask up, down, or stop
+	  |
 
-3 >,- ask right or down
-   |
+	3 >,- ask right or down
+		|
 
-4 -.< ask left or down
-   |
+	4 -.< ask left or down
+		|
 
-   |  ask up or right
-5 >'-
+		|  ask up or right
+	5 >'-
 
-   |
-6 -'< ask left or up
+		|
+	6 -'< ask left or up
 
 for 1 and 2, continue til you hit different character
 
 move:
-1 ._ <-> -.
-2 _, <-> ,-
-3 _ <-> .
-  .     |
-4 _ <-> ,
-  ,     |
-5 _'# <-> '-#
-6 #'_ <-> #-'
-7 ' <-> |
-  _     '
-8 |_ <-> _|
-9 - <-> _
-  _     -
+	1 ._ <-> -.
+	2 _, <-> ,-
+	3 _ <-> .
+	  .     |
+	4 _ <-> ,
+	  ,     |
+	5 _'# <-> '-#
+	6 #'_ <-> #-'
+	7 ' <-> |
+	  _     '
+	8 |_ <-> _|
+	9 - <-> _
+	  _     -
+
+
+# working remote
+
+My last job gave me the ability to work remote whenever I wanted to.
+We had an office, and I had a desk and could be surrounded by coworkers, but if I didn't feel like making the commute, there was not really any shame to it.
+I think there was still some pull to work around colleages, especially, people I enjoyed working with or talking to, but it was unexpected and really nice.
+At the time I thought a lot of jobs could and should be changed to allow working remote.
+
+There were some downsides, and if the team you worked with wasn't open to it, you'd run the risk of pestering everyone to accomodate your workstyle to make full remote work.
+For instance, meetings happened often enough in person, and if you were meeting with people from outside my group it wasn't as reflexive to open up a webex or hangouts call and broadcast the meeting link
+in a slack channel.
+So often enough, I would be left out unless I knew a meeting was happening and could ask someone to open a call, or someone from my team was in the meeting and thought to ask.
+Similarly, "water-cooler" conversation was lost working remote, replaced mostly with IRC chat, which I haven't found to be the same even in 100% remote groups.
+
+# logic programming
+
+I decided this most recent advent of code to complete all the puzzles using prolog, specifically [scryer-prolog].
+I managed to complete a fair number of them, though I failed to complete even the first part of around 5.
+
+When I did manage to complete one, it didn't take too much work to optimize the solution to less than one second, except for a handful of cases.
+Completing all of them in less than 1 second was not a goal of mine, and I don't even know if the optimization is there to do that.
+The lack of bit operations on numbers or access to contiguous memory meant that every boolean value was a full number, and every array of things to N\*2 space in memory (for cons style list), and access was O(N), so...not great.
+There's still a couple problems where I just can't figure out a way to store and access the data such that any iteration over it finishes in any reasonable time.
+Maybe making use of some scryer built-in types like the assoc array could help.
+
+I didn't really have many "aha" moments with logic programming this time around, and the problem set doesn't really lend itself to selecting a single correct solution from a large problem space.
+Mostly it was knowing good data structures and algorithms, and adapting them to match the tools I had (ie lists, recursion).
+I think reforming some of the data from flat lists to n-ary trees might improve runtime, but I haven't checked.
+
+When hitting the wall on some problems that I had a "correct" solution, but not a performant one, I started branching out and tried to see where logic programming has come since the 70s and where might it go.
+I've seen some links to [mercury] as a more typed version of prolog.
+In a different vein, I see [Z3] and other SMT solvers mentioned as stronger tools in a specific subspace of Prolog.
+Lastly, the field of [answer-set programming (ASP)] and the tool [clingo] have come up.
+Clingo is the only one I've rally tried to dig into, and I will say, I still don't really understand how I'm _supposed_ to use it.
+By that I mean, I try to write things that are simple prolog or functional data structures, and clingo hangs.
