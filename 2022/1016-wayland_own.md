@@ -1,4 +1,4 @@
-<pmeta id="created">2022 October 16</pmeta>
+<pmeta id="created">2022-10-16</pmeta>
 <pmeta id="title">Wayland interfaces in the times of rust ownership</pmeta>
 
 I spent the last couple of weeks implementing code to parse wayland protocol definitions in xml and generate rust code.
@@ -33,7 +33,7 @@ With a reference to a proxy object, anyone can send a request, so `WlRef<WlRegis
 I tried for a bit making the client be something you had to pass in, but it didn't make sense, because it opened the possibility for users of the API to pass in a different client or connection, and wouldn't tell you that the id is actually invalid in that context.
 So instead, I store an `rc::Weak` pointer back to the client in each `WlRef<_>` object, which is used to send requests.
 
-This sort of works, now for receiving events.
+This sort of works for requests, but the client must also receive events.
 When you create a new id for something, you have to actually pass the callback for events to that object at creation time.
 This is different from the C api which allows you to create an object, and register a listener for it later.
 `WlRef<WlDisplay>::get_registry` for instance takes a `WlRegistry` object that defines the `on_event` callback.
@@ -84,6 +84,9 @@ fn poll() {
 	objid = // unmarshal u32 from buf
 	let handlers = client.handlers.borrow(); // 'a  handlers.borrow'd
 	let handler = handlers.get(objid); // 'a
+	drop(handler); drop(handlers); // end of 'a
+	let new_ids = std::mem::replace(client.new_handlers.borrow_mut(), Map::new());
+	client.handlers.borrow_mut().extend(new_ids.into_iter()); // borrow_mut is fine here
 }
 
 fn <handler.handle>(buf) {
@@ -137,8 +140,6 @@ The _client_ and _server_ both sort of joint-own all the objects, and you call d
 While `wayland-rs` requires you to attempt to lock the object before using it.
 This is sort of like `Rc`, because the server could `destroy` it at any time even if you have a `WlRef<_>` with its id, and you have to always check whether that reference is still valid.
 I though of some design where you ask the client each time you want a reference to something, or maybe two reference types: one for inside a `poll` callback and one for outside, but I ultimately settled on locking the reference only in generated code where I need it, and allowing for lock failure in the error types.
-
--JD
 
 [wayland-scanner]: https://gitlab.freedesktop.org/wayland/wayland/-/blob/main/src/scanner.c#L1226
 [wayland-rs]: https://github.com/smithay/wayland-rs
