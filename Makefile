@@ -21,8 +21,10 @@ posts.mk:
 .md.html:
 	./render.sh -t post -s /post.css <$< >$@
 
-index.html: index.md
-	./render.sh -t person -s /menu.css <$< >$@
+new_posts.md: $(POSTS)
+	ls $(POSTS) |sort -r |head -n5 |./posts.sh embed >$@
+index.html: index.md new_posts.md
+	cat index.md new_posts.md |./render.sh -t person -s /menu.css >$@
 404.html: 404.md
 	./render.sh -s /menu.css <$< >$@
 
@@ -35,6 +37,7 @@ feed.xml: $(POSTS)
 .PHONY: clean
 clean:
 	rm -f *.html {2018,2019,2020,2022}/*.html feed.xml
+	rm new_posts.md
 	rm -rf pub
 
 pub/.git:

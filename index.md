@@ -8,7 +8,6 @@ and my current interests are [rust], [plan9], and natural languages.
 
 Here is some stuff I have made for you, the reader at home:
 - [cv](cv.pdf)
-- [some blog posts](posts.html)
 - [github://shua](https://github.com/shua)
 - [livestream muxer](https://shua.github.io/ssm)
 
