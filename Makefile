@@ -43,6 +43,7 @@ clean:
 pub/.git:
 	@echo "=> init pub/.git"
 	@mkdir -p pub; cp -R .git pub/.git; cd pub; git symbolic-ref HEAD refs/heads/pub
+	@cd pub; git pull || echo "unable to fetch latest version of pub"
 
 .PHONY: pub
 pub: pub/.git
