@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="201.54974mm"
+   height="278.19446mm"
+   viewBox="0 0 201.54974 278.19446"
    version="1.1"
    id="svg8"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14, custom)"
    sodipodi:docname="2022_cv.svg"
+   inkscape:export-filename="2022_cv_plain.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -18,29 +21,11 @@
   <defs
      id="defs2">
     <rect
-       x="215.00013"
-       y="160.9678"
-       width="162.4151"
-       height="52.681453"
-       id="rect1298" />
-    <rect
        x="4.528996"
        y="28.875008"
-       width="40.62549"
+       width="40.625488"
        height="15.983013"
        id="rect42" />
-    <rect
-       x="7.3098271"
-       y="10.61732"
-       width="24.294853"
-       height="16.252141"
-       id="rect28" />
-    <rect
-       x="7.3422206"
-       y="9.1777757"
-       width="142.57042"
-       height="37.91529"
-       id="rect1590" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -78,7 +63,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-4.5234371,-7.5001595)">
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
@@ -210,14 +196,6 @@
              y="250.49342">apr - aug 2016</tspan></text>
       </g>
     </g>
-    <text
-       xml:space="preserve"
-       id="text1588"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1590);display:inline;fill:#000000;fill-opacity:1;stroke:none" />
-    <text
-       xml:space="preserve"
-       id="text26"
-       style="font-size:10.5833px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect28);display:inline" />
     <g
        id="g3103"
        transform="translate(0,2.4978215)">
@@ -281,7 +259,7 @@
          transform="translate(2.0779342,-6.6986871)"><tspan
            x="4.5292969"
            y="34.011448"
-           id="tspan1441">title{</tspan></text>
+           id="tspan3113">title{</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.25;font-family:'Nimbus Mono PS';-inkscape-font-specification:'Nimbus Mono PS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
@@ -393,10 +371,6 @@
        style="fill:none;stroke:#cccccc;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 1;stroke-dashoffset:0;stroke-opacity:1"
        d="M 6.252279,34.740083 H 202.35624"
        id="path999" />
-    <text
-       xml:space="preserve"
-       id="text1296"
-       style="font-size:10.5833px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1298);display:inline" />
     <g
        id="g2416"
        transform="translate(-1.4596969,-2.4990972)">
@@ -628,22 +602,22 @@
            transform="translate(-1.5937525,42.762526)"><tspan
              x="8.2294798"
              y="52.130142"
-             id="tspan1443">Golang, Java, Scala, </tspan><tspan
+             id="tspan3115">Golang, Java, Scala, </tspan><tspan
              x="8.2294798"
              y="57.421803"
-             id="tspan1445">Spring, Jenkins CI, </tspan><tspan
+             id="tspan3117">Spring, Jenkins CI, </tspan><tspan
              x="8.2294798"
              y="62.713467"
-             id="tspan1447">POSIX Shell, </tspan><tspan
+             id="tspan3119">POSIX Shell, </tspan><tspan
              x="8.2294798"
              y="68.005131"
-             id="tspan1449">Terraform, python, </tspan><tspan
+             id="tspan3121">Terraform, python, </tspan><tspan
              x="8.2294798"
              y="73.296795"
-             id="tspan1451">ansible, packer, js, </tspan><tspan
+             id="tspan3123">ansible, packer, js, </tspan><tspan
              x="8.2294798"
              y="78.588459"
-             id="tspan1453">ReactJS, Node.js</tspan></text>
+             id="tspan3125">ReactJS, Node.js</tspan></text>
       </g>
       <g
          id="g2366"
@@ -667,10 +641,10 @@
            transform="translate(-1.5937525,70.779061)"><tspan
              x="7.7172475"
              y="64.581337"
-             id="tspan1455">Rust, C, C++, </tspan><tspan
+             id="tspan3127">Rust, C, C++, </tspan><tspan
              x="7.7172475"
              y="69.872998"
-             id="tspan1457">x86_64 asm</tspan></text>
+             id="tspan3129">x86_64 asm</tspan></text>
       </g>
       <g
          id="g2357"
@@ -694,7 +668,7 @@
            transform="translate(-1.5171019,89.118335)"><tspan
              x="7.7172475"
              y="64.581337"
-             id="tspan1459">prolog, brainf*ck</tspan></text>
+             id="tspan3131">prolog, brainf*ck</tspan></text>
       </g>
       <g
          id="g2348"
@@ -718,10 +692,10 @@
            transform="translate(-1.5171019,107.24644)"><tspan
              x="7.7172475"
              y="64.581337"
-             id="tspan1461">Lean, TLA+, plan9, </tspan><tspan
+             id="tspan3133">Lean, TLA+, plan9, </tspan><tspan
              x="7.7172475"
              y="69.872998"
-             id="tspan1463">GLSL, OpenGL</tspan></text>
+             id="tspan3135">GLSL, OpenGL</tspan></text>
       </g>
     </g>
     <g
@@ -840,46 +814,46 @@
          transform="translate(-1.5498092,34.20949)"><tspan
            x="68.402916"
            y="63.510559"
-           id="tspan1465">Worked with a team of ~20 to maintain on api gateway written with </tspan><tspan
+           id="tspan3137">Worked with a team of ~20 to maintain api gateway written with </tspan><tspan
            x="68.402916"
            y="68.80222"
-           id="tspan1467">spring, java 15; which included quite a bit of business logic, a 100Gb </tspan><tspan
+           id="tspan3139">spring, java 15; which included quite a bit of business logic, a 100Gb </tspan><tspan
            x="68.402916"
            y="74.093884"
-           id="tspan1469">in-memory data store, home-grown PAXOS
+           id="tspan3141">in-memory data store, home-grown PAXOS
 </tspan><tspan
            x="68.402916"
            y="79.385548"
-           id="tspan1471">Serviced customer apps on 6 different platforms, to a scale of over </tspan><tspan
+           id="tspan3143">Serviced customer apps on 6 different platforms, to a scale of over </tspan><tspan
            x="68.402916"
            y="84.677212"
-           id="tspan1473">1.5m unique devices per hour and 27k requests per second.
+           id="tspan3145">1.5m unique devices per hour and 27k requests per second.
 </tspan><tspan
            x="68.402916"
            y="89.968876"
-           id="tspan1475">Deployed 2-3 times/week with concourse ci, terraform, vault, ansible, </tspan><tspan
+           id="tspan3147">Deployed 2-3 times/week with concourse ci, terraform, vault, ansible, </tspan><tspan
            x="68.402916"
            y="95.26054"
-           id="tspan1477">packer, across multiple aws regions, and managed infrastructure
+           id="tspan3149">packer, across multiple aws regions, and managed infrastructure
 </tspan><tspan
            x="68.402916"
            y="100.5522"
-           id="tspan1479">Tested with mockito, wiremock, pytest
+           id="tspan3151">Tested with mockito, wiremock, pytest
 </tspan><tspan
            x="68.402916"
            y="105.84387"
-           id="tspan1481">Led teams of ~4 as technical lead, architect, and technical writer
+           id="tspan3153">Led teams of ~4 as technical lead, architect, and technical writer
 </tspan><tspan
            x="68.402916"
            y="111.13553"
-           id="tspan1483">Proved fault-tolerant data ingest pipeline with apache flink and TLA+
+           id="tspan3155">Proved fault-tolerant data ingest pipeline with apache flink and TLA+
 </tspan><tspan
            x="68.402916"
            y="116.4272"
-           id="tspan1485">Designed and built containerized microservice on ECS handling </tspan><tspan
+           id="tspan3157">Designed and built containerized microservice on ECS handling </tspan><tspan
            x="68.402916"
            y="121.71886"
-           id="tspan1487">content playback and licensing</tspan></text>
+           id="tspan3159">content playback and licensing</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
@@ -904,7 +878,7 @@
            id="tspan455">»</tspan><tspan
            sodipodi:role="line"
            x="63.445473"
-           y="118.51687"
+           y="118.51688"
            id="tspan457" /><tspan
            sodipodi:role="line"
            x="63.445473"
@@ -912,7 +886,7 @@
            id="tspan459">»</tspan><tspan
            sodipodi:role="line"
            x="63.445473"
-           y="129.10019"
+           y="129.1002"
            id="tspan461" /><tspan
            sodipodi:role="line"
            x="63.445473"
@@ -920,11 +894,11 @@
            id="tspan463">»</tspan><tspan
            sodipodi:role="line"
            x="63.445473"
-           y="139.68352"
+           y="139.68353"
            id="tspan465">»</tspan><tspan
            sodipodi:role="line"
            x="63.445473"
-           y="144.97517"
+           y="144.97519"
            id="tspan742">»</tspan><tspan
            sodipodi:role="line"
            x="63.445473"
@@ -1004,14 +978,14 @@
          transform="translate(-1.5498077,1.5775313)"><tspan
            x="68.402916"
            y="63.510559"
-           id="tspan1489">Designed AWS SQS-compliant queue service: 80k msgs/sec, golang, </tspan><tspan
+           id="tspan3161">Designed AWS SQS-compliant queue service: 80k msgs/sec, golang, </tspan><tspan
            x="68.402916"
            y="68.80222"
-           id="tspan1491">foundationDB, apache kafka, NATS, distributed architecture
+           id="tspan3163">foundationDB, apache kafka, NATS, distributed architecture
 </tspan><tspan
            x="68.402916"
            y="74.093884"
-           id="tspan1493">Implemented distributed hashed hierarchical timer wheel</tspan></text>
+           id="tspan3165">Implemented distributed hashed hierarchical timer wheel</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
@@ -1109,15 +1083,15 @@
            transform="translate(-1.5990311,91.577835)"><tspan
              x="68.402916"
              y="63.510559"
-             id="tspan1495">Research using SDN routers to improve video transfer
+             id="tspan3167">Research using SDN routers to improve video transfer
 </tspan><tspan
              x="68.402916"
              y="68.80222"
-             id="tspan1497">Research applications of Hadoop inside Eucalyptus cluster
+             id="tspan3169">Research applications of Hadoop inside Eucalyptus cluster
 </tspan><tspan
              x="68.402916"
              y="74.093884"
-             id="tspan1499">Won 2nd place at Temple Future of Computing</tspan></text>
+             id="tspan3171">Won 2nd place at Temple Future of Computing</tspan></text>
         <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
@@ -1291,14 +1265,14 @@
            transform="translate(-1.3133557,170.06812)"><tspan
              x="68.402916"
              y="63.510559"
-             id="tspan1501">Created open source C++ game engine with remote, multinational </tspan><tspan
+             id="tspan3173">Created open source C++ game engine with remote, multinational </tspan><tspan
              x="68.402916"
              y="68.80222"
-             id="tspan1503">team using Ogre3D, BulletPhysics, SFML and Boost
+             id="tspan3175">team using Ogre3D, BulletPhysics, SFML and Boost
 </tspan><tspan
              x="68.402916"
              y="74.093884"
-             id="tspan1505">Led team designing and creating dev tools and scene editor</tspan></text>
+             id="tspan3177">Led team designing and creating dev tools and scene editor</tspan></text>
         <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Nunito Sans';-inkscape-font-specification:'Nunito Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#cccccc;stroke-width:0.264583"
