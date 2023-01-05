@@ -48,7 +48,7 @@ pub/.git:
 .PHONY: pub
 pub: pub/.git
 	@echo "=> copy generated artifacts"
-	@find . '(' -regex '\./pub\|./drafts\|.*/\..*' ')' -prune -o '(' \
+	@find . '(' -regex '\./pub\|./drafts\|./well-known\|.*/\..*' ')' -prune -o '(' \
 		'(' \
 			-type d -exec mkdir -p pub/{} ';' \
 		')' , '(' \
@@ -58,4 +58,5 @@ pub: pub/.git
 			-exec cp {} pub/{} ';' \
 		')' \
 	')'
+	@install -d ./well-known pub/.well-known
 	@cd pub; git add .; git status
