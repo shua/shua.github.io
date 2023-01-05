@@ -58,5 +58,5 @@ pub: pub/.git
 			-exec cp {} pub/{} ';' \
 		')' \
 	')'
-	@install -d ./well-known pub/.well-known
+	@rm -rf pub/.well-known && cp -R well-known pub/.well-known
 	@cd pub; git add .; git status

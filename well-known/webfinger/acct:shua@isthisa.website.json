@@ -1,0 +1,23 @@
+{
+  "subject": "acct:shua@isthisa.website",
+  "aliases": [
+    "https://honk.isthisa.website/@shua",
+    "https://honk.isthisa.website/users/shua"
+  ],
+  "links": [
+    {
+      "rel": "http://webfinger.net/rel/profile-page",
+      "type": "text/html",
+      "href": "https://honk.isthisa.website/@shua"
+    },
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://honk.isthisa.website/users/shua"
+    },
+    {
+      "rel": "http://ostatus.org/schema/1.0/subscribe",
+      "template": "https://honk.isthisa.website/authorize_interaction?uri={uri}"
+    }
+  ]
+}
