@@ -11,11 +11,13 @@ without using any extra computation or space at runtime.
 The example given is to make sure that users of a merging and sorting library
 don't mess up the calls into the library.
 When they call
+
 	x = sort_by(comp, list1)
 	y = sort_by(comp, list2)
 	z = merge_by(comp, x, y)
 
 `comp` here is some comparison function that must be the same. Thus
+
 	x = sort_by(comp, list1)
 	y = sort_by(other_comp, list2)
 	z = merge_by(comp, x, y)
@@ -35,7 +37,7 @@ Since the "name" is a phantom type variable, it will result in no runtime overhe
 
 I decided to try implementing [GDP] in [Rust].
 First thing we need is a way of attaching types to other types without attaching data.
-Rust has [`PhantomData] for that, which is similar enough for my use.
+Rust has [`PhantomData`] for that, which is similar enough for my use.
 
 One of the issues I ran into early on, was trying to just rewrite the functions from the paper
 
@@ -95,18 +97,23 @@ will get compiler errors,
    if I want that, I should specify by adding `dyn` before the trait
 2. even with the `dyn` behaviour, it complains that the type is not known statically at compile time.
    You need this in rust, because the way the compiler is working for pass-by-value
-   	add f to stack
-   	add x to stack
-   	call run_it
+   ```
+   add f to stack
+   add x to stack
+   call run_it
+   ```
 
    if the compiler doesn't know how big `f` is going to be, it can't make the `add f to stack` commands
 
    Usually, for `dyn` arguments, you want to pass-by-reference, so either `&dyn Fn(_) -> _` or `Box<dyn Fn(_) -> _>`
 3. there is an alternative to `dyn` which is `impl` types, and writing
-   	fn run_it(f: impl Fn(i64) -> i64, x: i64) -> i64
-
+   ```
+   fn run_it(f: impl Fn(i64) -> i64, x: i64) -> i64
+   ```
    is like writing
-   	fn run_it<F: Fn(i64) -> i64>(f: F, x: i64) -> i64
+   ```
+   fn run_it<F: Fn(i64) -> i64>(f: F, x: i64) -> i64
+   ```
 
    This is known as "static dispatch" and the result is similar to C++ templates.
    It is also saying "`f` is of _some type that implements Fn..._", but instead of telling the compiler
