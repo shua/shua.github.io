@@ -36,7 +36,7 @@ feed.xml: $(POSTS)
 
 .PHONY: clean
 clean:
-	rm -f *.html {2018,2019,2020,2022}/*.html feed.xml
+	rm -f *.html {2018,2019,2020,2022,2023}/*.html feed.xml
 	rm new_posts.md
 	rm -rf pub
 

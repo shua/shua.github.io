@@ -6,5 +6,6 @@ POSTS = \
 	2020/0115-gdp-rs.html \
 	2020/0529-uefi.html \
 	2020/0529-yasm_utf.html \
-	2022/1016-wayland_own.html
+	2022/1016-wayland_own.html \
+	2023/1011-syntax_capabilities.html
 
