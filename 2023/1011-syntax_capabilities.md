@@ -1,4 +1,5 @@
 <pmeta id="created">2023-10-11</pmeta>
+<pmeta id="updated">2023-10-19</pmeta>
 <pmeta id="title">Syntax Capabilities</pmeta>
 
 I have a bit of a half-baked idea in my head.
@@ -136,12 +137,12 @@ just copy it from there.
 
 [0]: https://github.com/bazelbuild/starlark
 [1]: https://matt-rickard.com/accidentally-turing-complete
-[2]: todo: eBPF
-[4]: todo: c++ const eval
-[5]: todo: rust const eval
-[6]: todo: zig constexpr
-[7]: todo: f-omega with subtypes
-[8]: todo: rust dependant types
-[9]: todo: haskell dependant types
-[10]: todo: json
-[11]: todo: rusty object notation
+[2]: https://ebpf.io/
+[4]: https://en.cppreference.com/w/cpp/language/constant_expression
+[5]: https://doc.rust-lang.org/reference/const_eval.html
+[6]: https://ziglang.org/documentation/master/#comptime
+[7]: https://en.wikipedia.org/wiki/System_F#System_F%CF%89
+[8]: https://github.com/rust-lang/rfcs/issues/2709
+[9]: https://www.reddit.com/r/haskell/comments/13l2cmb/is_dependent_haskell_still_a_thing/
+[10]: https://www.json.org/json-en.html
+[11]: https://github.com/ron-rs/ron
