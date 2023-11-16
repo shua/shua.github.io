@@ -59,6 +59,9 @@ cat <<LDJSON
 LDJSON
 ;;
 post)
+cat <<NAV
+<a href="/">🏡 home</a>
+NAV
 cat <<LDJSON
 <script type="application/ld+json">
 { "@context": "http://schema.org"
