@@ -3,19 +3,24 @@
 FIND_POSTS = find . -path './20??*'
 
 .PHONY: all
-all: index.html 404.html posts.html feed.xml
+all: posts.mk index.html 404.html posts.html feed.xml
 
 include posts.mk
 
+.PHONY: posts.mk
 posts.mk:
 	@{ \
-	printf 'POSTS ='; \
-	$(FIND_POSTS) '(' -iname '*.md' -o -iname '*.html' ')' \
-		|sed 's/^\.\///; s/\.[a-z][a-z]*$$/.html/i' \
-		|sort |uniq \
-		|awk '{printf " \\\n\t%s", $$0}'; \
-	printf "\n\n"; \
-	} >$@
+		tmp=$$(mktemp); \
+		{ \
+		printf 'POSTS ='; \
+		$(FIND_POSTS) '(' -iname '*.md' -o -iname '*.html' ')' \
+			|sed 's/^\.\///; s/\.[a-z][a-z]*$$/.html/i' \
+			|sort |uniq \
+			|awk '{printf " \\\n\t%s", $$0}'; \
+		printf "\n\n"; \
+		} >$$tmp; \
+		cmp $$tmp $@ || mv $$tmp $@; \
+	}
 
 .SUFFIXES: .md .html .xml .css
 .md.html:
