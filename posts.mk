@@ -8,5 +8,6 @@ POSTS = \
 	2020/0529-yasm_utf.html \
 	2022/1016-wayland_own.html \
 	2023/1011-syntax_capabilities.html \
-	2023/1116-syncap-pt2.html
+	2023/1116-syncap-pt2.html \
+	2023/1117_hdl.html
 
