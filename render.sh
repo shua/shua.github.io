@@ -50,7 +50,7 @@ cat <<HEADER
 <link href="/f/Nunito.css" rel="stylesheet">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Blog Atom feed" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤔</text></svg>">
-<link rel="stylesheet" type="text/css" href="post.css" >
+<link rel="stylesheet" type="text/css" href="/post.css" >
 HEADER
 
 case "$type" in

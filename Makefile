@@ -45,13 +45,8 @@ clean:
 	rm new_posts.md
 	rm -rf pub
 
-pub/.git:
-	@echo "=> init pub/.git"
-	@mkdir -p pub; cp -R .git pub/.git; cd pub; git symbolic-ref HEAD refs/heads/pub
-	@cd pub; git pull || echo "unable to fetch latest version of pub"
-
 .PHONY: pub
-pub: pub/.git
+pub:
 	@echo "=> copy generated artifacts"
 	@find . '(' -regex '\./pub\|./drafts\|./well-known\|.*/\..*' ')' -prune -o '(' \
 		'(' \
@@ -64,4 +59,3 @@ pub: pub/.git
 		')' \
 	')'
 	@rm -rf pub/.well-known && cp -R well-known pub/.well-known
-	@cd pub; git add .; git status
