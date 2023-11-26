@@ -23,17 +23,17 @@ posts.mk:
 	}
 
 .SUFFIXES: .md .html .xml .css
-.md.html:
+.md.html: render.sh
 	./render.sh -t post <$< >$@
 
 new_posts.md: $(POSTS)
 	ls $(POSTS) |sort -r |head -n5 |./posts.sh embed >$@
-index.html: index.md new_posts.md
+index.html: index.md new_posts.md render.sh
 	cat index.md new_posts.md |./render.sh -t person >$@
-404.html: 404.md
+404.html: 404.md render.sh
 	./render.sh <$< >$@
 
-posts.html: $(POSTS)
+posts.html: $(POSTS) render.sh
 	ls $(POSTS) |sort -r |./posts.sh |./render.sh -t menu >$@
 
 feed.xml: $(POSTS)
