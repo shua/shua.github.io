@@ -9,5 +9,6 @@ POSTS = \
 	2022/1016-wayland_own.html \
 	2023/1011-syntax_capabilities.html \
 	2023/1116-syncap-pt2.html \
-	2023/1117_hdl.html
+	2023/1117_hdl.html \
+	2023/1126-tmp-counting-immutable-beans.html
 
