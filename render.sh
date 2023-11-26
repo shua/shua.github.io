@@ -1,15 +1,20 @@
 #!/bin/sh
 
 usage() {
-	echo "usage: render.sh [ -s CSS ]*"
+	echo "usage: render.sh [-t TYPE]"
 }
 
 title=""
 created=""
 
 while case "$1" in
+"") false;;
 -t) type="$2"; shift 1;;
-*) false;;
+*)
+	echo "Unrecognized option $1" >&2
+	usage
+	exit 1
+	;;
 esac; do shift; done
 
 meta() {
@@ -45,6 +50,7 @@ cat <<HEADER
 <link href="/f/Nunito.css" rel="stylesheet">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Blog Atom feed" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤔</text></svg>">
+<link rel="stylesheet" type="text/css" href="post.css" >
 HEADER
 
 case "$type" in
@@ -76,26 +82,12 @@ LDJSON
 ;;
 esac
 
-while [ $# -gt 0 ]; do
-	case "$1" in
-	"-s")
-		echo '<link rel="stylesheet" type="text/css" href="'"$2"'" >'
-		shift 2
-		;;
-	*)
-		echo "Unrecognized option $1" >&2
-		usage
-		exit 1
-		;;
-	esac
-done
-
 [ -n "$title" ] && echo "<title>$title</title>"
 
 cat <<HEADER
 </head>
 <body>
-<div>
+<div class="$type">
 HEADER
 
 echo "<header>"

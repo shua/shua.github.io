@@ -1,18 +1,41 @@
+:root {
+	--bg: hsl(0, 0%, 10%);
+	--bg2: hsl(0, 0%, 20%);
+	--fg: hsl(0, 0%, 95%);
+	--accent: #f90;
+	--mid: hsl(0, 0%, 50%);
+}
+
+@media (prefers-color-scheme: light) {
+:root {
+	--bg: hsl(0, 0%, 90%);
+	--bg2: hsl(0, 0%, 80%);
+	--fg: hsl(0, 0%, 5%);
+}
+}
+
 * { box-sizing: border-box; }
 html, body {
-	background: #222;
-	color: #ddd;
+	background: var(--bg);
+	color: var(--fg);
 	font-family: Nunito, sans, mono;
 	font-size: 18px;
 	margin: 0;
 	padding: 0;
 }
 body > div {
+	max-width: 500px;
+	margin: auto;
+	margin-top: 10%;
+	border: 1px solid;
+	padding: 1em;
+}
+body > div.post {
 	max-width: 800px;
 	margin: auto;
 	margin-top: 5%;
 	margin-bottom: 5%;
-	border: 1px solid #999;
+	border: 1px solid var(--mid);
 	padding: 1em;
 }
 body > div > h1 {
@@ -29,10 +52,10 @@ h1 { font-weight: 600; }
 a {
 	text-decoration: none;
 	color: inherit;
-	border-bottom: .2em solid;
+	border-bottom: 2px solid;
 }
-a:visited { border-color: #444; }
-a:hover,a:focus { border-color: #f90; }
+a:visited { border-color: var(--mid); }
+a:hover,a:focus { border-color: var(--accent); }
 ul { list-style-type: none; }
 ol { padding-left: 1.5em; }
 li { margin: .3em; }
@@ -40,7 +63,7 @@ ul li::before { content: "» "; }
 
 pre {
 	overflow: auto;
-	background: #333;
+	background: var(--bg2);
 	-moz-tab-size: 3;
 	tab-size: 3;
 }
@@ -55,7 +78,7 @@ div > pre {
 	padding-right: 1em;
 }
 code {
-	background: #333;
+	background: var(--bg2);
 	padding: 0.1em;
 	font-size: 12px;
 	font-weight: 500;
@@ -80,14 +103,14 @@ header {
 header > * { flex-grow: 1 }
 created {
 	text-align: right;
-	color: #999
+	color: var(--mid);
 }
 
 pmeta { display: none }
 
 @media only screen and (max-width: 800px) {
 	html, body { font-size: 14px; }
-	body > div {
+	body > div.post {
 		margin: 1em;
 		border: 0;
 	}
@@ -98,4 +121,13 @@ pmeta { display: none }
 		padding-left: 1em;
 		padding-right: 1em;
 	}
+}
+
+@media only screen and (max-width: 500px) {
+	body > div {
+		margin: 1em;
+		padding: 0;
+		border: 0;
+	}
+	p { text-align: revert; }
 }
