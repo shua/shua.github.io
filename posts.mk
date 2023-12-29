@@ -11,5 +11,6 @@ POSTS = \
 	2023/1116-syncap-pt2.html \
 	2023/1117_hdl.html \
 	2023/1126-tmp-counting-immutable-beans.html \
-	2023/1210-tmp-fipfp.html
+	2023/1210-tmp-fipfp.html \
+	2023/1229_xmas.html
 
