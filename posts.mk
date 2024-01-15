@@ -13,5 +13,6 @@ POSTS = \
 	2023/1126-tmp-counting-immutable-beans.html \
 	2023/1210-tmp-fipfp.html \
 	2023/1229_xmas.html \
-	2024/0115.html
+	2024/0115.html \
+	2024/0115-tmp-tunneling-1.html
 
