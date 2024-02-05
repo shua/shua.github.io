@@ -14,5 +14,6 @@ POSTS = \
 	2023/1210-tmp-fipfp.html \
 	2023/1229_xmas.html \
 	2024/0115-tmp-tunneling-1.html \
-	2024/0121-subst-trait.html
+	2024/0121-subst-trait.html \
+	2024/0204-tmp-tunneling-2.html
 
