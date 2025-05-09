@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Offload thinking</title>
+<meta charset="UTF-8">
+<style>
+html { scroll-behavior: smooth; padding: 0; background: #bbb; }
+slide {
+  width: calc(100% - 4em); min-height: calc(100vh - 4em);
+  padding: 2em 4em;
+  margin: 2em;
+  background: #ddd; border-radius: 1em;
+  box-sizing: border-box; 
+  display: flex; flex-direction: column;
+}
+body { display: flex; flex-direction: column; align-items: center; padding: 0; margin: 0; font-size: 24pt; }
+hr { margin: 0; padding: 0; }
+h1 { margin: auto; text-align: center; }
+h1 > sub { color: #444; font-style: italic; font-size: 0.4em; }
+fig { display: flex; flex-direction: row; align-items: center; justify-content: center; flex-grow: 1; }
+pre { background: #222; color: #ddd; padding: 0.5em; line-height: 100%; overflow-x: scroll; }
+fig > pre { width: fit-content; margin: 0; }
+code { background: #222; color: #ddd; border-radius: 0.2em; font-size: smaller; padding: 0 0.2em; }
+pre > code { padding: 0; background: transparent; }
+li { margin: 0.5em; }
+li li { font-size: smaller; }
+@media print {
+h2 { margin: 0.08em; }
+slide { height: calc(100vh - 4em); break-after: page; overflow: hidden; }
+slide.reference { font-size: smaller; }
+pre { border: solid 1px #ddd; }
+fig > pre, fig > code { line-height: normal; font-size: 12pt; }
+code { font-size: 16pt; }
+p { margin: 0.01em; }
+hr { display: none; }
+ul { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
+li { margin-top: 0; margin-bottom: 0; }
+}
+</style>
+</head>
+<body>
+<hr tabindex=0 />
+<slide>
+<h1>Small-Brain Systems Design<br/>
+<sub>"just be careful" but better</sub></h1>
+<div style="display:flex; justify-content:center; margin:auto;">
+<img style="width:25%;" src="smallbrain.jpg" />
+<pre style="margin:0; padding:1em;">
+<code>    .--.  .-.
+  ( internet )  <----
+ (    )        ) -->  
+  "--"   -----"
+</code></pre>
+</div>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>This talk</h2>
+<ul>
+<li>Introduction to me and my problems (brainstorming)</li>
+<li>Modelling as a tool for thinking (tool demo)</li>
+<li>Why I don't do this all the time (yet)</li>
+<li>Questions</li>
+</ul>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>Who am I?</h2>
+<div style="display:flex; justify-content:space-between;">
+<ul>
+<li>JD but also <a href="https://github.com/shua">shua</a></li>
+<li>Worked at Comcast and Joyent, Distributed Systems</li>
+<li><del>Found</del><ins>Made</ins> a lot of bugs</li>
+</ul>
+<img style="width:30%;" src="me_fur_coat.jpg" />
+</div>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>Problem statement</h2>
+<fig>
+<pre><code>data     .-----------.   data (eventually)
+-------&gt;{ }    q      }------------------&gt;
+         "-----------' 
+</code></pre>
+</fig>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>Problem statement</h2>
+<fig>
+<pre><code>     .--.  .-.
+   ( internet )
+  (    )        )
+   "--"   -----"
+       |   ^ sync request/response
+       v   |
+   ,---------.         _..-------.._        
+   | Ω-STAR  |&lt;------&gt;|'-...___...-'|        
+   '---------'        |    OurDB    |        
+     |     ^          '-._________.-'
+     |     '-------------.
+     |    .-----------.  |
+     '--&gt;{ }    q      }-' async messaging
+          "-----------'  
+</code></pre>
+</fig>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>Problem statement</h2>
+<ul>
+<li>CEP and WELP 🤷</li>
+<li>Batch processing state changes</li>
+<li>Requirements: in-order<a href="#in-order"><sup>1</sup></a>, at-least-once</li>
+</ul>
+<fig>
+<pre><code>ADD 123 Movie{... version 1 ...}
+ADD 444 Actor{...}
+DEL 444
+DEL 123
+ADD 123 Movie{... version 2 ...}
+</code></pre>
+</fig>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>Problem statement</h2>
+<ul>
+<li>Retries vs in-order
+<pre><code>              retry v1
+               ,------.
+ .-------. v2  v,-----X.
+{ }  q    }----&gt;| WELP |---&gt;
+ "-------'      '------'
+</code></pre>
+</li>
+</ul>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>Problem statement</h2>
+<ul>
+<li>Poison pills and dead-letter-queues
+<pre><code>    .-------. 
+ ,&gt;{ } dlq   }
+ |  "-------'   v1
+ '--------------------.
+ .-------. ?    ,-----X.
+{ }  q    }----&gt;| WELP |---&gt;
+ "-------'      '------'
+</code></pre>
+</li>
+<li>Manual re-ingest vs in-order</li>
+<li>Performance: partial updates, compaction</li>
+</ul>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>Brainstorming</h2>
+<ul>
+<li>in-order, at-least-once
+<ul>
+<li><code>while read msg; do process msg; done</code></li>
+</ul>
+</li>
+<li>manual intervention
+<ul>
+<li><code>curl</code> with what I think it should be?</li>
+</ul>
+</li>
+<li>handling errors
+<ul>
+<li><code>retry * max</code> attempts?</li>
+</ul>
+</li>
+</ul>
+</slide>
+<slide>
+<h2>My problems</h2>
+<ul>
+<li>Please, when building distributed systems, can we do any better than "be careful"?</li>
+<li>Fuzz testing is great...
+<ul>
+<li>but I don't want to build and deploy everything before we can realize it's broken.</li>
+</ul>
+</li>
+<li>Can we just build a proof-of-concept, and fuzz-test that?
+<ul>
+<li>Another word for "proof-of-concept" is "model"...</li>
+</ul>
+</li>
+</ul>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>TLA⁺</h2>
+<ul>
+<li><a href="https://github.com/tlaplus/tlaplus">TLA⁺</a> is a frontend for <code>tlc</code>
+<ul>
+<li>but don't tell llamport I said that</li>
+</ul>
+</li>
+<li>There's a specification language which some people like?</li>
+<li><a href="http://lamport.azurewebsites.net/tla/industrial-use.html">Some companies</a> used it to find some bugs</li>
+</ul>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>Demo</h2>
+<pre><code>$ tlc -config Example.cfg Example.tla
+</code></pre>
+<p><small>checking complex rules that match dogs with owners</small></p>
+<div style="display:flex; justify-content:center; align-items:center;">
+<img src="person_sneezing.jpg" alt="woman sneezing, particle droplets" style="width:25%" />
+<img src="diagram_dalle.jpg" alt="DALL-E generated image from prompt 'Diagram of system ensuring dog owners that are allergic don't get dogs with fur'" title="Diagram of system ensuring dog owners that are allergic don't get dogs with fur" style="width:30%;"/>
+<img src="dog.jpg" alt="dog looking incredulously" style="width:25%;"/>
+</div>
+<ul style="font-size:0.3em; font-color:#aaa">
+<li>https://www.dailymail.co.uk/health/article-1092075/Use-tissue-How-just-sneeze-infect-150-people.html
+<li>https://creator.nightcafe.studio/creation/w0z9gQjD59H3ncIXFfMY
+<li>https://wallup.net/animals-nature-dog-closeup/
+</ul>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>TLA⁻</h2>
+<ul>
+<li>Docs are all over the place</li>
+<li>llamport doesn't want you to think about <code>tlc</code> or types
+<ul>
+<li>but in practice that means rewriting your spec until stars align</li>
+</ul>
+</li>
+<li>Poor support for floats, strings<a href="#strings"><sup>2</sup></a>, probability<a href="#probability"><sup>3</sup></a>, real-time guarantees</li>
+<li>Better than alternatives<a href="#alternatives"><sup>4</sup></a></li>
+</ul>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h2>This is my Coca Cola recipe</h2>
+<ul>
+<li>WELP did not deploy 🤷 but Comcast got back its investment in me</li>
+<li>Like <code>borrowck</code>, or Mufasa 🦁, it lives in you</li>
+<li>There is a whole world of "formal methods" that are all in this vein</li>
+</ul>
+</slide>
+<hr tabindex=0 />
+<slide>
+<h1>Questions?</h1>
+</slide>
+<hr tabindex=0 />
+<slide class="reference">
+<h2>Notes</h2>
+<ol>
+<li><a id="in-order">we can partition them by type or individual ID</a></li>
+<li><a id="strings">strings are supported, but they're inconvenient to work with</a></li>
+<li><a id="probability">there's some work being done to collect statistics</a>
+also a good <a href="https://www.youtube.com/watch?v=cYenTPD7740&amp;list=PLWLcqZLzY8u8jqzxEa-U_Q3KQhtxUJPpC&amp;index=4">talk</a> on using these tools</li>
+<li><a id="alternatives">The world of formal methods is vast, and each tool excels in its space. TLA⁺ excels in modelling and checking distributed algorithms.</a>
+<ul>
+<li>SAT/SMT are useful for the yes/no questions, but don't usually tell you sequence of states to get to no</li>
+</ul>
+</li>
+</ol>
+</slide>
+<hr tabindex=0 />
+<slide class="reference">
+<h2>Links</h2>
+<ul>
+<li>learntla: https://www.learntla.com/index.html
+<ul>
+<li>learntla's links: https://www.learntla.com/examples/index.html</li>
+</ul>
+</li>
+<li>tlaplus/Examples repo: https://github.com/tlaplus/Examples</li>
+<li>TLA⁺ 2022 conference playlist: https://www.youtube.com/watch?v=GEsvGGp0jyQ&amp;list=PLWLcqZLzY8u8jqzxEa-U_Q3KQhtxUJPpC</li>
+<li>official TLA⁺: http://lamport.azurewebsites.net/tla/tla.html</li>
+</ul>
+</slide>
+<hr tabindex=0 />
+</body>
+</html>
