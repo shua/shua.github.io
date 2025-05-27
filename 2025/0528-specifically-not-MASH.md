@@ -44,6 +44,7 @@ $ curl "localhost:8080/search?q=*"
 { ... bunch of json ... }
 ```
 
+
 That's annoying, I can't reproduce the bug locally. That's going to make it harder to make changes and see what happens.
 I can try a local version of the gateway pointed at the production search service, just need to copy in another arcane configuration file.
 ```
@@ -55,7 +56,19 @@ $ curl "localhost:8080/search?q=*"
 401 oauth unauthorized
 ```
 
-My mental model of authorization is at odds with what I'm seeing. The API keys are correct (I checked them twice), and most search queries go through fine, search terms shouldn't even be a factor for whether a request is authorized or not, all requests which are signed with this key should be authorized. This is like realizing one day your front door does not open for guys named "Gerald".
+My mental model of authorization is at odds with what I'm seeing.
+
+<fig>
+
+```
+  !?      * 
+ ( )       | 
+ \|/       |\
+  |      -----
+ / \      | |
+```
+</fig>
+The API keys are correct (I checked them twice), and most search queries go through fine, search terms shouldn't even be a factor for whether a request is authorized or not, all requests which are signed with this key should be authorized. This is like realizing one day your front door does not open for guys named "Gerald".
 
 Checking the production logs, eventually I see related logs for my requests:
 ```
@@ -121,7 +134,7 @@ Digging through our client implementation for the search service, it's using the
 
 About an hour of reading and re-reading some very clean and well-documented code which implements the authentication protocol and has links to specific sections of the spec, my head is spinning.
 
-What is real? Is this some issue with the hardware? Are we running different versions of the code than what I'm looking at? Have computers loosed their bonds of strict execution and decided to use their newfound freedom of will mostly continue to serve media metadata, only to play tricks on this poor Junior Software Engineer
+What is real? Is this some issue with the hardware? Are we running different versions of the code than what I'm looking at? Have computers loosed their bonds of strict execution and decided to use their newfound freedom of will mostly continue to serve media metadata, only to play tricks on this poor Junior Software Engineer?
 
 My coworker suggested I just strip the `*` from search queries and move on. After all, searching for `MASH` returns the same results as `M*A*S*H` so the search service is probably doing something like that anyway. I guess it's fine but in a way that makes my soul hurt a bit. There's nothing high-priority on the ticket queue right now, and I'm invested, I will solve this the non-soul-hurty way.
 
@@ -146,16 +159,6 @@ It says something like the following:
 So cool, let's do that, but what is the `UNRESERVED` set? Got to look at `other specification`. Ah, it's a specification for an encoding. So I implement that encoding and use it for encoding the data that I want to sign.
 I end up with the signature that matches the custom authentication code on the proxy server.
 So the gateway server must be wrong. But this gateway server talks to a *lot* of other servers, all using the same, apparently wrong authentication code?
-I look up to see if anyone has filed bugs similar to this on the most standard of standard libraries, and sure enough there's one from 8 years ago when this authentication scheme was more popular...and there's a thread where people argue about how to interpret the spec.
-
-There are two interpretations of the line above:
-
-> 1. The data is encoded as in \<link to other specification\>, for example characters in the UNRESERVED set are percent-encoded, the rest are left as-is.
-
-> 2. Some definitions are used from \<link to other specification\>. Characters in the UNRESERVED set are percent-encoded, the rest are left as-is.
-
-The first would mean that we should use the rules from `other specification` to encode, those rules encode more characters than just the `UNRESERVED` set.
-The second means we use definitions like `UNRESERVED` and `percent-encoded` from `other specification` but we define a new rule to follow in this specification which is *only* to encode the `UNRESERVED` set characters.
 
 <fig>
 
@@ -169,7 +172,31 @@ The second means we use definitions like `UNRESERVED` and `percent-encoded` from
 ```
 </fig>
 
+I look up to see if anyone has filed bugs similar to this on the most standard of standard libraries, and sure enough there's one from 8 years ago when this authentication scheme was more popular...and there's a thread where people argue about how to interpret the spec.
+
+There are two interpretations of the line above:
+
+> 1. The data is encoded as in \<link to other specification\>, for example characters in the UNRESERVED set are percent-encoded, the rest are left as-is.
+
+> 2. Some definitions are used from \<link to other specification\>. Characters in the UNRESERVED set are percent-encoded, the rest are left as-is.
+
+The first would mean that we should use the rules from `other specification` to encode, those rules encode more characters than just the `UNRESERVED` set.
+The second means we use definitions like `UNRESERVED` and `percent-encoded` from `other specification` but we define a new rule to follow in this specification which is *only* to encode the `UNRESERVED` set characters.
+
+The key here is that one character which is not in the `UNRESERVED` set but which should be encoded as per `other specification` is none other than the main character:
+
+<fig>
+
+```
+       
+      *
+       
+(the asterisk)
+```
+</fig>
+
 So the fix for this was to implement the spec matching the search services authors' interpretation of the spec, and leave a lot of comments why this was done, and why none of the upstreams would accept patches to switch to the other's interpretations.
 
 Still a bit soul-hurty of a fix, and took a couple extra days, but ultimately more fulfilling than just stripping out `*` and I had some fun reading specs.
+
 
