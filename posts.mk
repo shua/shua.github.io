@@ -16,6 +16,5 @@ POSTS = \
 	2024/0115-tmp-tunneling-1.html \
 	2024/0121-subst-trait.html \
 	2024/0204-tmp-tunneling-2.html \
-	2024/0905-hexapod.html \
 	2025/0528-specifically-not-MASH.html
 
