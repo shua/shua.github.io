@@ -87,6 +87,13 @@ pre > code {
 	background: inherit;
 	padding: 0;
 }
+fig {
+	display: flex;
+	justify-content: center;
+}
+fig > pre {
+	padding: 0.5em;
+}
 blockquote {
 	margin: 0;
 	padding-left: 0.8em;
