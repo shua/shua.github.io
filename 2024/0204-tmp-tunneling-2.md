@@ -1,4 +1,4 @@
-<pmeta id="created">2024-02-04</pmeta>
+<pmeta id="created">2024-02-04T12:00:00+01:00</pmeta>
 <pmeta id="title">TMP: Abstraction-Safe Effect Handlers via Tunneling (pt 2)</pmeta>
 
 [Last time][tmp-tunnel-1] I reviewed [_"Abstraction-Safe Effect Handlers via Tunnelling"_][tunneling], I got stuck trying to mentally translate the authors' nice surface syntax which they used for examples, into the more strict and verbose syntax they used for the actual definitions and proofs.

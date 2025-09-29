@@ -1,4 +1,4 @@
-<pmeta id="created">2020-05-26</pmeta>
+<pmeta id="created">2020-05-26T12:00:00-05:00</pmeta>
 <pmeta id="title">Code-vid: yasm utf string ops</pmeta>
 
 From the [previous work in UEFI images], I got a new itch: extend [`yasm`] to support

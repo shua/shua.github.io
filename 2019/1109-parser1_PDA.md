@@ -1,5 +1,5 @@
-<pmeta id="created">2019-11-09</pmeta>
-<pmeta id="updated">2019-11-29</pmeta>
+<pmeta id="created">2019-11-09T12:00:00-05:00</pmeta>
+<pmeta id="updated">2019-11-29T12:00:00-05:00</pmeta>
 <pmeta id="title">Parsing 1: PDA</pmeta>
 
 I go back and forth reading/doing and now I'm trying to add teaching to the loop.

@@ -1,4 +1,6 @@
 #!/bin/sh
+#
+# validate with https://validator.w3.org/feed
 
 meta() {
 	grep '<pmeta id="'"$1"'">' \
@@ -13,7 +15,8 @@ cat <<EOF
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<title>is this a blog</title>
 	<subtitle>it is</subtitle>
-	<link href="http://isthisa.blog"/>
+	<link href="https://isthisa.website"/>
+	<link rel="self" href="https://isthisa.website/feed.xml"/>
 	<updated>$updated</updated>
 	<author>
 		<name>JD Lloret</name>
@@ -26,15 +29,10 @@ for post in $posts; do
 	title=$(meta title <$post)
 	updated=$(meta updated <$post)
 	if [ -z "$updated" ]; then updated=$(meta created <$post); fi
-	summary=$(
+	content=$(
 		<$post grep -v "<pmeta" \
-		|pulldown-cmark \
-		|sed 's#</*p>#\n&\n#g' \
-		|awk '
-			BEGIN   {n=0; p=0}
-			/<p>/   {p=p+1; if(p==1){n=n+1}}
-			n==1&&p>0 {print $0}
-			/<\/p>/ {p=p-1}')
+		|pulldown-cmark
+	)
 	post=$(echo "$post" |sed 's/\.md$//')
 
 cat <<ENTRY
@@ -43,9 +41,7 @@ cat <<ENTRY
 		<link href="https://isthisa.website/$post.html"/>
 		<id>tag:isthisa.website,2018:$post</id>
 		<updated>$updated</updated>
-		<summary>
-$summary
-		</summary>
+		<content type="html"><![CDATA[$content]]></content>
 	</entry>
 ENTRY
 done

@@ -1,4 +1,4 @@
-<pmeta id="created">2025-05-27</pmeta>
+<pmeta id="created">2025-05-27T12:00:00+01:00</pmeta>
 <pmeta id="title">Bug report: No stars allowed</pmeta>
 
 The bug report was pretty straightforward, and yet every time I read it I was more puzzled.

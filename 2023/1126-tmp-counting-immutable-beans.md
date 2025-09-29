@@ -1,4 +1,4 @@
-<pmeta id="created">2023-11-26</pmeta>
+<pmeta id="created">2023-11-26T12:00:00-05:00</pmeta>
 <pmeta id="title">TMP: Counting Immutable Beans</pmeta>
 
 I have a lot of papers I want to get around to reading more deeply, so I'm going to try to encourage myself by implementing a weekly review, a la [The Morning Paper]

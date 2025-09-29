@@ -1,5 +1,5 @@
-<pmeta id="created">2023-10-11</pmeta>
-<pmeta id="updated">2023-10-19</pmeta>
+<pmeta id="created">2023-10-11T12:00:00-05:00</pmeta>
+<pmeta id="updated">2023-10-19T12:00:00-05:00</pmeta>
 <pmeta id="title">Syntax Capabilities</pmeta>
 
 I have a bit of a half-baked idea in my head.

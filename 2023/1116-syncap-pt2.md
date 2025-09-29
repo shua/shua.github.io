@@ -1,4 +1,4 @@
-<pmeta id="created">2023-11-16</pmeta>
+<pmeta id="created">2023-11-16T12:00:00-05:00</pmeta>
 <pmeta id="title">Syntax Capabilities pt. 2</pmeta>
 
 As per my [previous post][syncap1], I think there are benefits to restricting which

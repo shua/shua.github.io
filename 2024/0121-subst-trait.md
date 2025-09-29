@@ -1,4 +1,4 @@
-<pmeta id="created">2024-01-21</pmeta>
+<pmeta id="created">2024-01-21T12:00:00+01:00</pmeta>
 <pmeta id="title">Substitution: the boring part of eval implementations</pmeta>
 
 This week, instead of implementing some type theory paper, I decided to automate some tedious programming.

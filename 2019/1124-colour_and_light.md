@@ -1,4 +1,4 @@
-<pmeta id="created">2019-11-24</pmeta>
+<pmeta id="created">2019-11-24T12:00:00-05:00</pmeta>
 <pmeta id="title">colour and light</pmeta>
 
 Colour and light are different things.

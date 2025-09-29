@@ -1,4 +1,4 @@
-<pmeta id="created">2022-10-16</pmeta>
+<pmeta id="created">2022-10-16T12:00:00-05:00</pmeta>
 <pmeta id="title">Wayland interfaces in the times of rust ownership</pmeta>
 
 I spent the last couple of weeks implementing code to parse wayland protocol definitions in xml and generate rust code.

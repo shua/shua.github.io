@@ -1,4 +1,4 @@
-<pmeta id="created">2019-12-06</pmeta>
+<pmeta id="created">2019-12-06T12:00:00-05:00</pmeta>
 <pmeta id="title">Parsing 2: recursive descent</pmeta>
 
 [Last time](./1109-parser1_PDA.html)

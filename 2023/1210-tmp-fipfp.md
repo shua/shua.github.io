@@ -1,4 +1,4 @@
-<pmeta id="created">2023-12-9</pmeta>
+<pmeta id="created">2023-12-09T12:00:00-05:00</pmeta>
 <pmeta id="title">TMP: Fully In-Place Functional Programming</pmeta>
 
 Continuing the theme from [last time][tmp-beans], I'll be reviewing a paper related to static memory management.

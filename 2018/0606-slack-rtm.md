@@ -1,4 +1,4 @@
-<pmeta id="created">2018-06-06</pmeta>
+<pmeta id="created">2018-06-06T12:00:00-05:00</pmeta>
 <pmeta id="title">slack-rtm</pmeta>
 
 After learning slack had [removed support] for [irc gateways],

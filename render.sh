@@ -23,9 +23,10 @@ meta() {
 
 prettydate() {
 	if [ $# -lt 1 ]; then read date; else date=$1; fi
-	y=$(echo "$date" |cut -d'-' -f1)
-	m=$(echo "$date" |cut -d'-' -f2)
-	d=$(echo "$date" |cut -d'-' -f3)
+	ymd=$(echo "$date" |cut -d'T' -f1)
+	y=$(echo "$ymd" |cut -d'-' -f1)
+	m=$(echo "$ymd" |cut -d'-' -f2)
+	d=$(echo "$ymd" |cut -d'-' -f3)
 	m=$(printf "Jan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\nNov\nDec\n" |sed -n ${m}p)
 	d=$(echo "$d" |sed 's/^0//')
 	echo "$y $m $d"
